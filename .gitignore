@@ -1,0 +1,17 @@
+# IDEA
+.idea
+.DS_STORE
+
+# dependencies
+node_modules
+
+# logs
+npm-debug.log
+yarn.lock
+package-lock.json
+
+# Nuxt build
+.nuxt
+
+# Nuxt generate
+dist
