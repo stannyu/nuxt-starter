@@ -7,10 +7,10 @@ $transition-timing-variable: .5s;
   opacity: 0;
 }
 
-.bounce-enter-active {
+.bounce-enter-active, .layout-enter-active {
   animation: bounce-in .8s;
 }
-.bounce-leave-active {
+.bounce-leave-active, .layout-leave-active {
   animation: bounce-out .5s;
 }
 @keyframes bounce-in {
