@@ -1,9 +1,18 @@
 # ASSETS
 
-This directory contains your un-compiled assets such as LESS, SASS, or JavaScript.
+**This directory contains images and global (component/layout/page agnostic) styles.**
 
-More information about the usage of this directory in the documentation:
-https://nuxtjs.org/guide/assets#webpacked
+As a preprocessor we use SASS.
+Styles injected inside ```nuxt.config.js``` file in ```css``` section.  
 
-**This directory is not required, you can delete it if you don't want to use it.**
+There is also a ```theme``` folder in root of project. This folder will contain SASS styles for specific Studio. 
 
+**AS OF**
+```javascript
+module.exports = {
+  //..
+  css: ['@/assets/styles/global.scss', '@/theme/theme.scss']
+  //..
+}
+```
+**!!! Config declaration global styles will be OVERRITEN by theme styles**

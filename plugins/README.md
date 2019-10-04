@@ -1,9 +1,20 @@
 # PLUGINS
 
-This directory contains your Javascript plugins that you want to run before instantiating the root vue.js application.
+Since Nuxt.js 2.4, **mode** has been introduced as option of plugins to specify plugin type, possible value are: *client* or *server*. ssr: false will be adapted to mode: 'client' and deprecated in next major release.
 
-More information about the usage of this directory in the documentation:
-https://nuxtjs.org/guide/plugins
+<hr>
 
-**This directory is not required, you can delete it if you don't want to use it.**
+#####Example:
+```javascript
+{src: '@/plugins/globals', mode: 'client'}
+```
 
+<br>
+#####Inside plugin file:
+
+```javascript
+import Vue from 'vue';
+import VuePluginName from 'vue-plugin-module';
+
+Vue.use(VuePluginName);
+```

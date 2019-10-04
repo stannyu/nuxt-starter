@@ -1,78 +1,83 @@
 <template>
-  <section class="container">
-    <div>
-      <app-logo />
-      <h1 class="title">
-        nuxt-def
-      </h1>
-      <h2 class="subtitle">
-        Test for SSR with Nuxt & VueJS
-      </h2>
-      <div class="links">
-        <a href="https://nuxtjs.org/" target="_blank" class="button--green"
-          >Documentation</a
-        >
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-          >GitHub</a
-        >
-      </div>
-      <MyCustomComponent />
-      <div class="links_container">
-        <nuxt-link to="/team">Team link</nuxt-link>
-        <nuxt-link to="/team/about">About link</nuxt-link>
-      </div>
+  <div>
+    empty sceleton 4 DotCom
+    <p class="color_class_global">Lorem ipsum dolor.</p>
+    <p class="color_class_theme">Lorem ipsum dolor.</p>
+    <base-component></base-component>
+
+    <hr />
+
+    <div class="centered_container">
+      <md-card style="width: 300px;">
+        <md-card-header>
+          <div class="md-title">Card without hover effect</div>
+        </md-card-header>
+
+        <md-card-content>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio itaque ea, nostrum odio. Dolores, sed
+          accusantium quasi non.
+        </md-card-content>
+
+        <md-card-actions>
+          <md-button>Action</md-button>
+          <md-button>Action</md-button>
+        </md-card-actions>
+      </md-card>
     </div>
-  </section>
+
+    <hr />
+
+    <md-button class="md-raised md-primary" @click="onClickHandler">Primary</md-button>
+
+    <hr />
+
+    <md-menu md-direction="bottom-start">
+      <md-button md-menu-trigger>Bottom Start</md-button>
+
+      <md-menu-content>
+        <md-menu-item>My Item 1</md-menu-item>
+        <md-menu-item>My Item 2</md-menu-item>
+        <md-menu-item>My Item 3</md-menu-item>
+      </md-menu-content>
+    </md-menu>
+
+    <hr />
+  </div>
 </template>
 
 <script>
-import AppLogo from "~/components/AppLogo.vue";
-import MyCustomComponent from "../components/MyCustomComponent.vue";
-
+import BaseComponent from '@/components/BaseComponent';
+import 'nuxt-vue-material';
 export default {
   components: {
-    AppLogo,
-    MyCustomComponent
+    BaseComponent
+  },
+  created() {
+    console.log();
+    if (process.client) {
+      console.log('Client triggered');
+    }
+    if (process.server) {
+      console.log('Server triggered');
+    }
+  },
+  methods: {
+    foo() {},
+    onClickHandler() {
+      console.log('Logging message');
+    }
   }
 };
 </script>
 
-<style>
-  .links_container {
-    margin-top: 100px;
-    width: 100%;
-    display: inline-block;
-  }
-.container {
-  min-height: 100vh;
+<style lang="scss" scoped>
+hr {
+  margin: 40px 0;
+}
+.centered_container {
   display: flex;
+  height: 400px;
   justify-content: center;
   align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* 1 */
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
 }
 </style>
