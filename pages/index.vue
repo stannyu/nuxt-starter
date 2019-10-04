@@ -42,13 +42,24 @@
     </md-menu>
 
     <hr />
+
+    <div v-for="singleProduct in storedata" :key="singleProduct.id">
+      <nuxt-link :to="goToProductsPage(singleProduct.id)" no-prefetch>{{ singleProduct.name }}</nuxt-link>
+      <!--      <h3 @click="productPageNavigate(singleProduct.id)">{{singleProduct.name}}</h3>-->
+    </div>
   </div>
 </template>
 
 <script>
 import BaseComponent from '@/components/BaseComponent';
-import 'nuxt-vue-material';
+
 export default {
+  computed: {
+    storedata() {
+      const productPl = this.$store.getters['product/getProductsData'];
+      return productPl;
+    }
+  },
   components: {
     BaseComponent
   },
@@ -65,6 +76,12 @@ export default {
     foo() {},
     onClickHandler() {
       console.log('Logging message');
+    },
+    goToProductsPage(productId) {
+      return `products/${productId}`;
+    },
+    productPageNavigate(productId) {
+      this.$router.push(`products/${productId}`);
     }
   }
 };

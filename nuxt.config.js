@@ -1,3 +1,11 @@
+const productsData = require('./static/storedata');
+
+const dynamicRoutes = () => {
+  return new Promise((resolve) => {
+    resolve(productsData.map((el) => `products/${el.id}`));
+  });
+};
+
 module.exports = {
   mode: 'universal',
 
@@ -42,5 +50,9 @@ module.exports = {
 
   build: {
     extend(config, ctx) {}
+  },
+
+  generate: {
+    routes: dynamicRoutes
   }
 };
